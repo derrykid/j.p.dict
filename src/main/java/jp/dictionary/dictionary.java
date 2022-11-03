@@ -1,5 +1,7 @@
 public class Dictionary {
-  Map<String, Word> dictionary;
-  Word word = new Vocabulary('water', 'n 水');
-  dictionary.put('water', word);
+  public Map<String, Word> dictionary;
+  public dictionary(String eng,String chi){
+    Word word = new Vocabulary(eng,chi);
+    dictionary.put(eng, word);
+  }
 }
