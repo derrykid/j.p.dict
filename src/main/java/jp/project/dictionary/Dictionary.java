@@ -1,4 +1,7 @@
-package jp.dictionary;
+package jp.project.dictionary;
+
+import jp.project.webRequester.DictionaryWebService;
+import jp.project.word.Word;
 
 import java.util.HashMap;
 import java.util.Map;

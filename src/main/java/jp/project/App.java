@@ -1,6 +1,9 @@
-package jp.dictionary;
+package jp.project;
 
-public class Main{
+import jp.project.dictionary.Dictionary;
+import jp.project.word.Word;
+
+public class App {
     public static void main(String[] args) {
 
         Dictionary engChineseDictionary = new Dictionary();

@@ -1,4 +1,6 @@
-package jp.dictionary;
+package jp.project.webRequester;
+
+import jp.project.word.Word;
 
 import java.io.IOException;
 import java.net.URI;

@@ -1,4 +1,4 @@
-package jp.dictionary;
+package jp.project.word;
 
 public class Vocabulary implements Word {
 
