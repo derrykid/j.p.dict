@@ -3,19 +3,12 @@ package jp.dictionary;
 public class Main{
     public static void main(String[] args) {
 
-        Word word = new Vocabulary("water", "n.水,水域,领海,困境;v.灌溉,流泪，流口水");
+        Dictionary engChineseDictionary = new Dictionary();
 
-        // this will print:
-        // n.水,水域,领海,困境;v.灌溉,流泪，流口水
-        System.out.println(word.getChinese());
+        String searchedWord = "water";
 
-        // this will print:
-        // water
-        System.out.println(word.getEnglish());
+        Word water = engChineseDictionary.searchVocabulary(searchedWord);
 
-        // this will print:
-        // "water": 意思是 n.水,水域,领海,困境;v.灌溉,流泪，流口水
-        System.out.println(word);
-
+        System.out.println(water);
     }
 }

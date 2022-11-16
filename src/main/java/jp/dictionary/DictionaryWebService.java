@@ -8,13 +8,12 @@ import java.net.http.HttpResponse;
 
 public class DictionaryWebService {
 
-    private static final String webRequestURI =
+    private static final String WEB_REQUEST_ADDRESS =
             "https://dict-mobile.iciba.com/interface/index.php?c=word&m=getsuggest&nums=10&is_need_mean=1&word=";
 
     public static Word getWord(String requestWord) {
         var response = searchWord(requestWord);
-        Word word = createWord(response);
-        return word;
+        return parseWord(response);
     }
 
     private static HttpResponse<String> searchWord(String requestWord) {
@@ -22,7 +21,7 @@ public class DictionaryWebService {
         var client = HttpClient.newHttpClient();
 
         // create a request
-        var requestURI = webRequestURI + requestWord;
+        var requestURI = WEB_REQUEST_ADDRESS + requestWord;
         var request = HttpRequest.newBuilder(URI.create(requestURI))
                 .GET()
                 .build();
@@ -39,7 +38,7 @@ public class DictionaryWebService {
         }
     }
 
-    private static Word createWord(HttpResponse<String> response) {
+    private static Word parseWord(HttpResponse<String> response) {
         // TODO parse json
         return null;
     }
