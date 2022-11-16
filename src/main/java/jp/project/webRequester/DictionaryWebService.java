@@ -12,6 +12,7 @@ public class DictionaryWebService {
 
     private static final String WEB_REQUEST_ADDRESS =
             "https://dict-mobile.iciba.com/interface/index.php?c=word&m=getsuggest&nums=10&is_need_mean=1&word=";
+    private static final HttpClient httpClient = HttpClient.newHttpClient();
 
     public static Word getWord(String requestWord) {
         var response = searchWord(requestWord);
@@ -19,8 +20,7 @@ public class DictionaryWebService {
     }
 
     private static HttpResponse<String> searchWord(String requestWord) {
-        // create a client
-        var client = HttpClient.newHttpClient();
+        var client = httpClient;
 
         // create a request
         var requestURI = WEB_REQUEST_ADDRESS + requestWord;
@@ -35,7 +35,8 @@ public class DictionaryWebService {
     private static HttpResponse<String> getResponse(HttpClient client, HttpRequest request) {
         try {
             return client.send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException | InterruptedException e) {
+        } catch (InterruptedException | IOException e) {
+            System.out.println("Web request has been interrupted.");
             throw new RuntimeException(e);
         }
     }
