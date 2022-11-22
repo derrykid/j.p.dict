@@ -1,7 +1,15 @@
 package jp.project.word;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import jp.project.webRequester.VocabularyDeserializer;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(using = VocabularyDeserializer.class)
 public class Vocabulary implements Word {
 
+    @JsonProperty("message")
     private final String english;
     private final String chinese;
 

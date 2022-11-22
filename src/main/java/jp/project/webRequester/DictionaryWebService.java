@@ -1,5 +1,8 @@
 package jp.project.webRequester;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jp.project.word.Vocabulary;
 import jp.project.word.Word;
 
 import java.io.IOException;
@@ -13,6 +16,7 @@ public class DictionaryWebService {
     private static final String WEB_REQUEST_ADDRESS =
             "https://dict-mobile.iciba.com/interface/index.php?c=word&m=getsuggest&nums=10&is_need_mean=1&word=";
     private static final HttpClient httpClient = HttpClient.newHttpClient();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static Word getWord(String requestWord) {
         var response = searchWord(requestWord);
@@ -42,8 +46,13 @@ public class DictionaryWebService {
     }
 
     private static Word parseWord(HttpResponse<String> response) {
-        // TODO parse json
-        return null;
+        Word vocabulary = null;
+        try {
+            vocabulary = objectMapper.readValue(response.body(), Vocabulary.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        return vocabulary;
     }
 
 }
